@@ -1,0 +1,14 @@
+"""Todoist MCP Server - A Model Context Protocol server for Todoist integration."""
+
+from .server import TodoistMCPServer, main
+from .client import TodoistClient, TodoistTask, TodoistProject, TodoistSection
+
+__version__ = "0.1.0"
+__all__ = [
+    "TodoistMCPServer",
+    "TodoistClient", 
+    "TodoistTask",
+    "TodoistProject",
+    "TodoistSection",
+    "main"
+]
