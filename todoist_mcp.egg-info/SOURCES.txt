@@ -3,9 +3,13 @@ README.md
 pyproject.toml
 todoist_mcp/__init__.py
 todoist_mcp/app.py
+todoist_mcp/cli.py
+todoist_mcp/client.py
 todoist_mcp/main.py
+todoist_mcp/server.py
 todoist_mcp.egg-info/PKG-INFO
 todoist_mcp.egg-info/SOURCES.txt
 todoist_mcp.egg-info/dependency_links.txt
+todoist_mcp.egg-info/entry_points.txt
 todoist_mcp.egg-info/requires.txt
 todoist_mcp.egg-info/top_level.txt

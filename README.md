@@ -37,9 +37,17 @@ To get your Todoist API token:
 
 ### As a Standalone Server
 
-Run the MCP server directly:
+After installation, you can run the MCP server in several ways:
+
 ```bash
+# Using the installed console script (recommended)
 todoist-mcp
+
+# Or using python module syntax
+python -m todoist_mcp.cli
+
+# Or directly with python
+python todoist_mcp/cli.py
 ```
 
 ### With Claude Desktop

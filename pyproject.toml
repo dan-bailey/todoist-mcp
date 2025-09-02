@@ -20,4 +20,4 @@ where = ["."]
 include = ["todoist_mcp*"]
 
 [project.scripts]
-todoist-mcp = "todoist_mcp:main"
+todoist-mcp = "todoist_mcp.cli:cli"

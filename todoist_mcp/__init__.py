@@ -2,6 +2,7 @@
 
 from .server import TodoistMCPServer, main
 from .client import TodoistClient, TodoistTask, TodoistProject, TodoistSection
+from .cli import cli
 
 __version__ = "0.1.0"
 __all__ = [
@@ -10,5 +11,6 @@ __all__ = [
     "TodoistTask",
     "TodoistProject",
     "TodoistSection",
-    "main"
+    "main",
+    "cli"
 ]
