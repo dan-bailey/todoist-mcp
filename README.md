@@ -67,6 +67,18 @@ Add this to your Claude Desktop configuration (`claude_desktop_config.json`):
 }
 ```
 
+Alternatively, if you set up your API token in a `.env` file, you can use:
+
+```json
+{
+  "mcpServers": {
+    "todoist": {
+      "command": "todoist-mcp"
+    }
+  }
+}
+```
+
 ## Available Tools
 
 ### Task Operations

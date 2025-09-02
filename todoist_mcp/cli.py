@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """Command-line entry point for the Todoist MCP server."""
 
-import asyncio
 import os
 from dotenv import load_dotenv
-from .server import main
 
 def cli():
     """Main CLI entry point."""
@@ -20,9 +18,12 @@ def cli():
         print("  TODOIST_API_TOKEN=your_token_here")
         return 1
     
-    # Run the async main function
+    # Import and run the server - FastMCP's run() is synchronous
+    from .server import mcp
     try:
-        asyncio.run(main())
+        # FastMCP's run() method is synchronous and handles its own event loop
+        mcp.run()
+        return 0
     except KeyboardInterrupt:
         print("\nShutting down...")
         return 0
