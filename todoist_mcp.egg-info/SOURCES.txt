@@ -2,6 +2,7 @@ LICENSE
 README.md
 pyproject.toml
 todoist_mcp/__init__.py
+todoist_mcp/__main__.py
 todoist_mcp/app.py
 todoist_mcp/cli.py
 todoist_mcp/client.py

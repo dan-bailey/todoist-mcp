@@ -50,9 +50,17 @@ To get your Todoist API token:
 
 ### As a Standalone Server
 
-Run the MCP server directly:
+After installation, you can run the MCP server in several ways:
+
 ```bash
+# Using the installed console script (recommended)
 todoist-mcp
+
+# Or using python module syntax
+python -m todoist_mcp.cli
+
+# Or directly with python
+python todoist_mcp/cli.py
 ```
 
 ### With Claude Desktop
@@ -67,6 +75,18 @@ Add this to your Claude Desktop configuration (`claude_desktop_config.json`):
       "env": {
         "TODOIST_API_TOKEN": "your_token_here"
       }
+    }
+  }
+}
+```
+
+Alternatively, if you set up your API token in a `.env` file, you can use:
+
+```json
+{
+  "mcpServers": {
+    "todoist": {
+      "command": "todoist-mcp"
     }
   }
 }

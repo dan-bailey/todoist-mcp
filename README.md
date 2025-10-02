@@ -11,6 +11,19 @@ A Model Context Protocol (MCP) server that integrates with Todoist, allowing Cla
 
 ## Installation
 
+### Prerequisites
+- Python 3.12 or higher
+- pip (Python package installer)
+- A Todoist account and API token
+
+### Step 1: Get Your Todoist API Token
+
+1. Go to [Todoist Integrations Settings](https://todoist.com/app/settings/integrations/developer)
+2. Scroll down to the "API token" section
+3. Copy your API token (you'll need this later)
+
+### Step 2: Install the MCP Server
+
 1. Clone the repository:
 ```bash
 git clone <repository-url>
@@ -22,52 +35,51 @@ cd todoist-mcp
 pip install -e .
 ```
 
-3. Set up your Todoist API token:
+**Note:** If you want to install it in a virtual environment:
 ```bash
-cp .env.example .env
-# Edit .env and add your Todoist API token
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -e .
 ```
 
-To get your Todoist API token:
-1. Go to https://todoist.com/app/settings/integrations/developer
-2. Create a new app or use an existing one
-3. Copy the API token
-
-## Usage
-
-### As a Standalone Server
-
-After installation, you can run the MCP server in several ways:
-
+3. Create a `.env` file with your API token:
 ```bash
-# Using the installed console script (recommended)
-todoist-mcp
-
-# Or using python module syntax
-python -m todoist_mcp.cli
-
-# Or directly with python
-python todoist_mcp/cli.py
+# Create .env file in the todoist-mcp directory
+echo "TODOIST_API_TOKEN=your_api_token_here" > .env
 ```
 
-### With Claude Desktop
+Replace `your_api_token_here` with the token you copied in Step 1.
 
-Add this to your Claude Desktop configuration (`claude_desktop_config.json`):
+### Step 3: Configure Claude Desktop
+
+The Claude Desktop configuration file is located at:
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
+
+#### Option A: Using Virtual Environment (Recommended for Development)
+
+If you installed in a virtual environment, use the full path to the `todoist-mcp` command:
 
 ```json
 {
   "mcpServers": {
     "todoist": {
-      "command": "todoist-mcp",
-      "env": {
-        "TODOIST_API_TOKEN": "your_token_here"
-      }
+      "command": "/full/path/to/venv/bin/todoist-mcp"
     }
   }
 }
 ```
 
-Alternatively, if you set up your API token in a `.env` file, you can use:
+To find the full path, run:
+```bash
+which todoist-mcp  # On macOS/Linux
+where todoist-mcp  # On Windows
+```
+
+#### Option B: Global Installation
+
+If you installed globally (without a virtual environment), you can use:
 
 ```json
 {
@@ -77,6 +89,58 @@ Alternatively, if you set up your API token in a `.env` file, you can use:
     }
   }
 }
+```
+
+**Important Notes:**
+- The MCP server will automatically load the `TODOIST_API_TOKEN` from the `.env` file in the `todoist-mcp` directory
+- You do NOT need to specify the token in the Claude Desktop config if you're using a `.env` file
+- After updating the config, **fully restart Claude Desktop** (quit the app completely, don't just close the window)
+
+### Step 4: Verify Installation
+
+1. **Restart Claude Desktop completely** (use Quit from the menu)
+2. Open Claude Desktop
+3. Look for the MCP server indicator (usually in the bottom corner or settings)
+4. You should see "todoist" listed as an available MCP server
+5. Try asking Claude: "Show me my Todoist tasks"
+
+### Troubleshooting
+
+**"Could not connect to MCP server" or "spawn todoist-mcp ENOENT"**
+- Make sure you used the full path to `todoist-mcp` if using a virtual environment
+- Verify the command exists by running `which todoist-mcp` (macOS/Linux) or `where todoist-mcp` (Windows)
+- Check that your `.env` file exists in the `todoist-mcp` directory with the correct token
+
+**"TODOIST_API_TOKEN environment variable not set"**
+- Ensure your `.env` file is in the `todoist-mcp` directory (same directory as `pyproject.toml`)
+- Verify the `.env` file contains: `TODOIST_API_TOKEN=your_actual_token`
+- Check for typos in the variable name
+
+**Server keeps disconnecting**
+- Verify your API token is valid at https://todoist.com/app/settings/integrations/developer
+- Check that you've fully restarted Claude Desktop
+- Look at Claude Desktop logs for specific error messages
+
+## Usage
+
+### With Claude Desktop
+
+Once configured, you can interact with Claude using natural language:
+
+- "Show me all my tasks for today"
+- "Create a task to review the quarterly report due tomorrow"
+- "Mark task ID 12345 as completed"
+- "List all my projects"
+- "Create a new project called 'Home Renovation'"
+- "Show me all high-priority tasks"
+
+### As a Standalone Server (Advanced)
+
+You can also run the MCP server directly for testing or integration with other MCP clients:
+
+```bash
+# Make sure your .env file is configured first
+todoist-mcp
 ```
 
 ## Available Tools

@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "todoist": {
+      "command": "/Users/dbailey/Dev/todoist-mcp/run-todoist-mcp.sh"
+    }
+  }
+}
