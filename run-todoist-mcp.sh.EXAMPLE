@@ -1,0 +1,7 @@
+# create a version of this called run-todoist-mcp.sh
+# put your API token in the TODOIST_API_TOKEN area, between the double quotes
+# change the directories to match the location of your todoist-mcp files
+#!/bin/bash
+cd /Users/dbailey/Dev/todoist-mcp
+export TODOIST_API_TOKEN="your token goes here"
+/Users/dbailey/Dev/url-test/venv/bin/python -m todoist_mcp
