@@ -2,6 +2,10 @@
 
 A Model Context Protocol (MCP) server that integrates with Todoist, allowing Claude and other MCP-compatible AI assistants to interact with your Todoist tasks and projects.
 
+<a href="https://glama.ai/mcp/servers/@dan-bailey/todoist-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@dan-bailey/todoist-mcp/badge" alt="Todoist Server MCP server" />
+</a>
+
 ## Features
 
 - **Task Management**: Create, read, update, complete, and delete tasks
